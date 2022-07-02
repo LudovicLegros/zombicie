@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des surviviants{% endblock %}
+
+{% block body %}
+<section>
+    {% for survivant in survivants %}
+    <article>   
+        <div>
+            <img src="{{asset('uploads/images/' ~ survivant.image)}}" alt="">
+        </div>
+        <h2>{{survivant.nom}}</h2>
+        <p>{{survivant.description | raw}}</p>
+
+    </article>
+    {% endfor %}
+</section>
+{% endblock %}

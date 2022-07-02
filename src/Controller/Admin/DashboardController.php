@@ -2,7 +2,9 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Race;
 use App\Entity\Skill;
+use App\Entity\Classe;
 use App\Entity\Survivant;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -46,5 +48,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Liste des compétences', 'fa-solid fa-book', Skill::class);
         yield MenuItem::linkToCrud('Liste des survivants', 'fa-solid fa-person', Survivant::class);
+        yield MenuItem::linkToCrud('Liste des races', 'fa-solid fa-person', Race::class);
+        yield MenuItem::linkToCrud('Liste des rôles', 'fa-solid fa-person', Classe::class);
     }
 }
