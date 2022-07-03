@@ -42,7 +42,7 @@ class SurvivantRepository extends ServiceEntityRepository
 
     public function getFilter(SurvivantFilter $search){
         $qb = $this->createQueryBuilder('su');
-        $query = $qb->select('su,r,skb,sky,sko1,sko2,skr1,skr2,skr3')
+        $query = $qb->select('su,r,skb,sky,sko1,sko2,skr1,skr2,skr3,cl')
                     ->leftjoin('su.blueskill1','skb')
                     ->leftjoin('su.yellowskill','sky')
                     ->leftjoin('su.orangeskill1','sko1')
@@ -50,11 +50,16 @@ class SurvivantRepository extends ServiceEntityRepository
                     ->leftjoin('su.redskill1','skr1')
                     ->leftjoin('su.redskill2','skr2')
                     ->leftjoin('su.redskill3','skr3')
-                    ->leftjoin('su.races','r');
+                    ->leftjoin('su.races','r')
+                    ->leftjoin('su.classes','cl');
 
-                    if(!$search->getRacename()==null){
-                        $query =$query  ->Where('r IN (:r)')
+                    if(!empty($search->getRacename())){
+                        $query =$query  ->andWhere('r IN (:r)')
                                         ->setParameter('r',$search->getRacename());
+                    }
+                    if(!empty($search->getClasseName())){
+                        $query =$query  ->orWhere('cl IN (:cl)')
+                                        ->setParameter('cl',$search->getClasseName());
                     }
  
                    

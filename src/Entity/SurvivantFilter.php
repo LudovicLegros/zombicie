@@ -7,6 +7,7 @@ namespace App\Entity;
 class SurvivantFilter 
 {
     private $races;
+    private $classes;
 
     public function getRacename() 
     {
@@ -16,6 +17,17 @@ class SurvivantFilter
     public function setRacename($races)
     {
         $this->races = $races;
+        return $this;
+    }
+
+    public function getClasseName() 
+    {
+        return $this->classes;
+    }
+
+    public function setClasseName($classes)
+    {
+        $this->classes = $classes;
         return $this;
     }
 

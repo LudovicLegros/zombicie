@@ -25,7 +25,7 @@ class SurvivantsController extends AbstractController
 
         //Affichage des survivants
         $survivants = $repository->getFilter($survivantFilter);
-        // dd($survivantFilter->getRacename());
+        // dd($survivantFilter->getClasseName());
         // dd($survivantFilter->racename);
         
         return $this->render('survivants/index.html.twig', [

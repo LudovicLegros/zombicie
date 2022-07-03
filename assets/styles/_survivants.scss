@@ -63,7 +63,8 @@ article {
 
 }
 
-#survivant_filter_raceName{
+div[id^='survivant_filter'], div[id*=' survivant_filter']{
+// #survivant_filter_raceName{
     @include flex();
     width:50%;
     flex-wrap: wrap;

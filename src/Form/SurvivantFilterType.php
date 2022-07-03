@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Race;
+use App\Entity\Classe;
 use App\Entity\Survivant;
 use App\Entity\SurvivantFilter;
 use Doctrine\ORM\EntityRepository;
@@ -23,6 +24,15 @@ class SurvivantFilterType extends AbstractType
                 'expanded' => true,
                 'query_builder'=> function (EntityRepository $er){
                     return $er->createQueryBuilder('u');
+                }
+                
+            ])
+            ->add('ClasseName',EntityType::class,[
+                'class' => Classe::class,
+                'multiple' => true,
+                'expanded' => true,
+                'query_builder'=> function (EntityRepository $ert){
+                    return $ert->createQueryBuilder('u');
                 }
                 
             ])
