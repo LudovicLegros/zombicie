@@ -3,8 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\Survivant;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use App\Entity\SurvivantFilter;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @extends ServiceEntityRepository<Survivant>
@@ -38,6 +39,42 @@ class SurvivantRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+
+    public function getFilter(SurvivantFilter $search){
+        $qb = $this->createQueryBuilder('su');
+        $query = $qb->select('su,r,skb,sky,sko1,sko2,skr1,skr2,skr3')
+                    ->leftjoin('su.blueskill1','skb')
+                    ->leftjoin('su.yellowskill','sky')
+                    ->leftjoin('su.orangeskill1','sko1')
+                    ->leftjoin('su.orangeskill2','sko2')
+                    ->leftjoin('su.redskill1','skr1')
+                    ->leftjoin('su.redskill2','skr2')
+                    ->leftjoin('su.redskill3','skr3')
+                    ->leftjoin('su.races','r');
+
+                    if(!$search->getRacename()==null){
+                        $query =$query  ->Where('r IN (:r)')
+                                        ->setParameter('r',$search->getRacename());
+                    }
+ 
+                   
+        $results = $query->getQuery()->getArrayResult();
+        return $results;
+      
+    }
+
+    // public function findSearch(SurvivantFilter $search): array
+    // {
+    //     $query = $this->createQueryBuilder('s');
+    //                     // ->select('c','s')
+
+    //     if(!empty($search->racename)){
+    //         $query =$query->andWhere('p.race_name LIKE :racename')
+    //                         ->setParameter('racename',$search->getRacename());
+    //     }
+
+    //     return $query->getQuery()->getResult();
+    // }
 
 //    /**
 //     * @return Survivant[] Returns an array of Survivant objects

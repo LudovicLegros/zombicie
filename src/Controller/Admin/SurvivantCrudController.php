@@ -36,6 +36,12 @@ class SurvivantCrudController extends AbstractCrudController
             AssociationField::new('redskill1','Rouge 1'),
             AssociationField::new('redskill2','Rouge 2'),
             AssociationField::new('redskill3','Rouge 3'),
+            AssociationField::new('classes','rôle')->setFormTypeOptions([
+                'by_reference'=>false,
+            ]),
+            AssociationField::new('races','race')->setFormTypeOptions([
+                'by_reference'=>false,
+            ]),
 
         ];
     }

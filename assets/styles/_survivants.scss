@@ -1,3 +1,77 @@
-article img{
-    height: 300px;
+section{
+    @include flex(space-between);
+    flex-wrap: wrap;
+}
+
+article {
+    @include flex(flex-start);
+    width: 600px;
+    padding:1em;
+
+    img{
+        height: 260px;
+    }
+
+    .details{
+        padding:1em;
+    }
+
+    ul{
+        margin-top:1em;
+
+        li{
+            position:relative;
+            cursor:pointer;
+            z-index: 1;
+
+            span{
+                // display:none;
+                visibility: hidden;
+                position:absolute;
+                background-color: bisque;
+                z-index: 2;
+                border:1px solid black;
+                border-radius: 3px;
+                padding:1em;
+                width: 250px;
+                right:100%;
+                top:0;
+                opacity:0%;
+                transition:all 0.3s ease-in-out;
+            }
+
+            &:hover span{
+                visibility: visible;
+                opacity:100%;
+                
+            }
+        }
+    }
+
+    .blue{
+        border:1px solid blue
+    }
+    .yellow{
+        border:1px solid yellow
+    }
+    .orange{
+        border:1px solid orange
+    }
+    .red{
+        border:1px solid red
+    }
+
+}
+
+#survivant_filter_raceName{
+    @include flex();
+    width:50%;
+    flex-wrap: wrap;
+
+    label{
+        width: 50%;
+    }
+    input{
+        width: 50%;
+    }
 }

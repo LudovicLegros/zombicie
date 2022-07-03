@@ -66,4 +66,8 @@ class Classe
 
         return $this;
     }
+
+    public function __toString(){
+        return $this->className;
+    }
 }
