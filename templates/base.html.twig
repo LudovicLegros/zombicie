@@ -18,11 +18,15 @@
         <header>
             <nav>
                 <ul>
+                   
                     <li><a href="{{path('home')}}">Liste des tables</a></li>
                     <li><a href="{{path('survivants')}}">Liste des survivants disponibles</a></li>
+                    {% if not app.user %}
                     <li><a href="{{path('app_login')}}">Connexion</a></li>
                     <li><a href="{{path('subscribe')}}">Inscription</a></li>
+                    {% else %}
                     <li><a href="{{path('app_logout')}}">Deconnexion</a></li>
+                    {% endif %}
                 </ul>
             </nav>
         </header>

@@ -3,5 +3,9 @@
 {% block title %}Hello HomeController!{% endblock %}
 
 {% block body %}
-    <h1>Hellow</h1>
+    <h1>Hellow
+        {% if app.user %} 
+        {{app.user.username}}
+        {% endif %} 
+    </h1>
 {% endblock %}

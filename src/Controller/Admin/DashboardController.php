@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Race;
+use App\Entity\User;
 use App\Entity\Skill;
 use App\Entity\Classe;
 use App\Entity\Survivant;
@@ -50,5 +51,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Liste des survivants', 'fa-solid fa-person', Survivant::class);
         yield MenuItem::linkToCrud('Liste des races', 'fa-solid fa-person-circle-question', Race::class);
         yield MenuItem::linkToCrud('Liste des rôles', 'fa-solid fa-person-dots-from-line', Classe::class);
+        yield MenuItem::linkToCrud('Gestion utilisateurs', 'fa-solid fa-circle-user', User::class);
     }
 }
