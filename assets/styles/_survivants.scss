@@ -1,3 +1,20 @@
+main{
+    // @include flex($align:stretch);
+    // height: 100%;
+    padding-left: 200px;
+
+    .filter{
+        padding: 12vh 0 0 1em;
+        left:0px;
+        top:0px;
+        width: 200px;
+        height: 100%;
+        background-color: #F2F1F1;
+        position:fixed;
+
+    }
+}
+
 section{
     @include flex(space-between);
     flex-wrap: wrap;
@@ -7,6 +24,8 @@ article {
     @include flex(flex-start);
     width: 600px;
     padding:1em;
+    border:1px solid rgb(214, 213, 213);
+    margin-bottom: 2em;
 
     img{
         height: 260px;
@@ -18,47 +37,59 @@ article {
 
     ul{
         margin-top:1em;
+        width:240px ;
 
         li{
             position:relative;
             cursor:pointer;
             z-index: 1;
+            margin:2px 0 0 2px;
+            // transition: all 0.3s ease-in-out;
 
             span{
                 // display:none;
                 visibility: hidden;
                 position:absolute;
-                background-color: bisque;
+                background-color: rgb(227, 227, 227);
+                box-shadow: 0px 0px 6px black;
                 z-index: 2;
-                border:1px solid black;
-                border-radius: 3px;
                 padding:1em;
                 width: 250px;
                 right:100%;
                 top:0;
                 opacity:0%;
-                transition:all 0.3s ease-in-out;
+                transition:opacity 0.3s ease-in-out;
             }
 
             &:hover span{
                 visibility: visible;
                 opacity:100%;
-                
             }
         }
     }
 
     .blue{
-        border:1px solid blue
+        background: linear-gradient(90deg, rgba(2,0,36,0) 50%, rgba(9,9,121,0.26) 80%, rgba(9,9,121,1) 100%);
+        border-bottom:1px solid rgb(9,9,121);
+        margin-bottom: 6px;
+        
     }
     .yellow{
-        border:1px solid yellow
+        background: linear-gradient(90deg, rgba(2,0,36,0) 50%, rgba(149, 177, 13, 0.26) 80%, rgb(204, 218, 15) 100%);
+        border-bottom:1px solid rgb(204, 218, 15);
+        margin-bottom: 6px;
+
     }
     .orange{
-        border:1px solid orange
+        background: linear-gradient(90deg, rgba(2,0,36,0) 50%, rgba(156, 86, 11, 0.26) 80%, rgb(156, 86, 11) 100%);
+        border-bottom:1px solid rgb(156, 86, 11);
+        &:nth-child(4){
+            margin-bottom: 6px;
+        }
     }
     .red{
-        border:1px solid red
+        background: linear-gradient(90deg, rgba(2,0,36,0) 50%, rgba(168, 15, 15, 0.26) 80%, rgb(168, 15, 15) 100%);
+        border-bottom:1px solid rgb(168, 15, 15);
     }
 
 }

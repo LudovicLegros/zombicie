@@ -28,7 +28,7 @@ class SurvivantsController extends AbstractController
         // dd($survivantFilter->getClasseName());
         // dd($survivantFilter->racename);
         
-        return $this->render('survivants/index.html.twig', [
+        return $this->render('survivants/survivants.html.twig', [
             'survivants' => $survivants,
             'form' => $form->createView(),
         ]);
