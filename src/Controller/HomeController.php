@@ -19,17 +19,18 @@ class HomeController extends AbstractController
         $noUser     = 0;
         $existUser  = 1;
         $tables     = $repository->findAll();
+        // $count      = $repository->count([$this->getUser()->getUsername()]);
         // $tests     = $profilrepo->test($this->getUser()->getId());
         // $tests      = $profilrepo->findById($this->getUser()->getId());
 
-        // dd($tests);
+        // dd($profilrepo->countTable($this->getUser()->getId()));
 
         if($this->getUser()!== null){
-            $tests       = $profilrepo->test($this->getUser()->getId());
+            $count = $profilrepo->countTable($this->getUser()->getId());
             return $this->render('home/index.html.twig', [
                 'tables'=>$tables,
                 // dd($tables)
-                'tests'=>$tests, 
+                'count'=>$count, 
                 'existuser'=>$existUser      
             ]);
         }else{

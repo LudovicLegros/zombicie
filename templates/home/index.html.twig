@@ -11,8 +11,10 @@
         {% if app.user %} 
         {{app.user.username}}
         {% endif %} 
+        {% set toto = 1%}
     </h1>
     <section id="home">
+       
         {# --------------LOOP FOR TABLE---------- #}
         {% for table in tables %}
         <div class="table">
@@ -20,24 +22,27 @@
                 <h2>{{table.tableName}}</h2>
                 <p>Le {{table.date|date("d/m/Y")}}</p>
             </div>
+            
             {# --------------LOOP FOR PROFIL---------- #}
             {% for profil in table.profils %}
-            <div>
+            <div>        
                 {{profil.player}}
-            </div>
-            
-            {% endfor %}
-            
-            {# VERIFY IF USER ALREADY IN TABLE #}
-            {% if existuser == 1 %}
-            {# {{dump(tests.0 is not defined)}} #}
-                {% if tests.0 is not defined %}
-                    <a class="join_btn" href="{{ path('join_table',{'id' : table.id}) }}">Rejoindre la table</a>
-                {% elseif table.id == tests.0.player.id %}
-                    <a class="join_btn" href="{{ path('join_table',{'id' : table.id}) }}">Rejoindre la table</a>
+                {% if app.user.username ==  profil.player %}
                 {% endif %}
-            {% endif %}
+            </div>
+                
+                
+            {% endfor %}
+            {# --------VERIFIER SI LE USER EXISTE DANS LA TABLE------- #}
+            {% set flag ='' %}
+            {% for profil in table.profils %} 
+                {% if profil.player == app.user.username and flag !=1 %}
+                    <a class="join_btn" href="{{ path('join_table',{'id' : table.id}) }}">Rejoindre la table</a>
+                    {% set flag = 1 %}
+                {% endif %}
+            {% endfor %}
             <a href="{{ path('detail_table',{'id' : table.id}) }}">Voir la table en détails</a>
+
         </div>
         {% endfor %}
     </section>

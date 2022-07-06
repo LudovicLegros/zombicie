@@ -3,8 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\Profil;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\HttpFoundation\Response;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @extends ServiceEntityRepository<Profil>
@@ -42,17 +43,31 @@ class ProfilRepository extends ServiceEntityRepository
 //    /**
 //     * @return Profil[] Returns an array of Profil objects
 //     */
-   public function test($thisplayer): array
-   {
+    public function countTable($thisplayer): array
+    {
     $qb = $this->createQueryBuilder('profil');
-    $query = $qb->select('profil,ta,pl')
-                ->leftJoin('profil.tableParty','ta')
+    $query = $qb->select('count(profil.player)')
                 ->leftJoin('profil.player','pl')
                 ->Where('pl = :p')
                 ->setParameter('p',$thisplayer);
 
-    $results = $query->getQuery()->getArrayResult();
-    return $results;
+    $results = $query->getQuery()->getSingleScalarResult();
+
+    return [$results];
+
+//    public function test($thisplayer): array
+//    {
+//     $qb = $this->createQueryBuilder('profil');
+//     $query = $qb->select('profil,ta,pl')
+//                 ->leftJoin('profil.tableParty','ta')
+//                 ->leftJoin('profil.player','pl')
+//                 ->Where('pl = :p')
+//                 ->setParameter('p',$thisplayer);
+
+//     $results = $query->getQuery()->getArrayResult();
+//     return $results;
+
+
     // if($results > 0){
     //     return [null];
     // }else{

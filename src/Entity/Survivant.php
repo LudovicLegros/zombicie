@@ -61,10 +61,14 @@ class Survivant
     #[ORM\ManyToMany(targetEntity: Race::class, mappedBy: 'survivantRace')]
     private $races;
 
+    #[ORM\ManyToMany(targetEntity: Profil::class, mappedBy: 'profilsurvivants')]
+    private $profils;
+
     public function __construct()
     {
         $this->classes = new ArrayCollection();
         $this->races = new ArrayCollection();
+        $this->profils = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -253,6 +257,33 @@ class Survivant
     {
         if ($this->races->removeElement($race)) {
             $race->removeSurvivantRace($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Profil>
+     */
+    public function getProfils(): Collection
+    {
+        return $this->profils;
+    }
+
+    public function addProfil(Profil $profil): self
+    {
+        if (!$this->profils->contains($profil)) {
+            $this->profils[] = $profil;
+            $profil->addProfilsurvivant($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProfil(Profil $profil): self
+    {
+        if ($this->profils->removeElement($profil)) {
+            $profil->removeProfilsurvivant($this);
         }
 
         return $this;
