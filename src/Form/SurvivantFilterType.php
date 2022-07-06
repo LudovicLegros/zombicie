@@ -19,16 +19,17 @@ class SurvivantFilterType extends AbstractType
     {
         $builder
             ->add('raceName',EntityType::class,[
+                'label' => 'Choisir une race',
                 'class' => Race::class,
                 'required' => false ,
-                // 'multiple' => true,
-                // 'expanded' => true,
                 'query_builder'=> function (EntityRepository $er){
                     return $er->createQueryBuilder('u');
                 }
                 
             ])
             ->add('ClasseName',EntityType::class,[
+                'label' => '
+                Selectionner les classes à afficher',
                 'class' => Classe::class,
                 'multiple' => true,
                 'expanded' => true,

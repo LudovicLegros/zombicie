@@ -12,6 +12,36 @@ main{
         background-color: #F2F1F1;
         position:fixed;
 
+    form[name="survivant_filter"] div{
+
+        &:first-child{
+            @include flex(center);
+            flex-direction: column;
+        }
+            @include flex();
+            width:200px;
+            flex-wrap: wrap;
+        
+            label{
+                width: 60%;
+                margin:0.5em 0 0.5em 0;
+                text-align:center;
+            }
+
+            #survivant_filter_ClasseName label{
+                text-align: left;
+            }
+
+            input{
+                width: 30%;
+            }
+            select{
+                width: 70%;
+            }
+        }
+        
+
+
     }
 }
 
@@ -94,16 +124,10 @@ article {
 
 }
 
-div[id^='survivant_filter'], div[id*=' survivant_filter']{
-// #survivant_filter_raceName{
-    @include flex();
-    width:50%;
-    flex-wrap: wrap;
-
-    label{
-        width: 50%;
-    }
-    input{
-        width: 50%;
+.classlogo{
+    margin-top:1em;
+    img{
+        height: 25px;
     }
 }
+

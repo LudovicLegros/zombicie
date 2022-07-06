@@ -6,7 +6,9 @@
 <main>
     <div class="filter">
     {{ form_start (form) }}
-        {{ form_widget (form) }}
+
+        {{ form_row (form.raceName) }}
+        {{ form_row (form.ClasseName) }}
         <button>Filtrer</button>
     {{ form_end (form)}} 
     </div>
@@ -16,7 +18,7 @@
         {# SURVIVANT CARDS #}
         <article>   
             <div>
-                <img src="{{asset('uploads/images/' ~ survivant.image)}}" alt="">
+                <img src="{{asset('uploads/images/' ~ survivant.image)}}" alt="portrait du survivant {{survivant.nom}}">
             </div>
             <div class="details">
                 <h2>{{survivant.nom}}</h2>
@@ -43,6 +45,11 @@
                         <span>{{survivant.redskill3.description}}</span>
                     </li>
                 </ul>
+                <div class="classlogo">
+                    {% for classe in survivant.classes %}
+                        <img src="{{asset('images/class/' ~ classe.className ~'.png')}}" title="{{classe.className}}" alt="icone pour la classe {{classe.className}}">
+                    {% endfor %}
+                </div>
             </div>
         </article>
         {# END SURVIVANT CARDS #}
