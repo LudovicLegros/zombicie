@@ -7,6 +7,7 @@ use App\Entity\User;
 use App\Entity\Skill;
 use App\Entity\Classe;
 use App\Entity\Survivant;
+use App\Entity\TableGame;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -47,10 +48,11 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
+        yield MenuItem::linkToCrud('Gestion utilisateurs', 'fa-solid fa-circle-user', User::class);
         yield MenuItem::linkToCrud('Liste des compétences', 'fa-solid fa-book', Skill::class);
         yield MenuItem::linkToCrud('Liste des survivants', 'fa-solid fa-person', Survivant::class);
         yield MenuItem::linkToCrud('Liste des races', 'fa-solid fa-person-circle-question', Race::class);
         yield MenuItem::linkToCrud('Liste des rôles', 'fa-solid fa-person-dots-from-line', Classe::class);
-        yield MenuItem::linkToCrud('Gestion utilisateurs', 'fa-solid fa-circle-user', User::class);
+        yield MenuItem::linkToCrud('Gestion table', 'fa-solid fa-campground', TableGame::class);
     }
 }

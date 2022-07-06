@@ -20,8 +20,9 @@ class SurvivantFilterType extends AbstractType
         $builder
             ->add('raceName',EntityType::class,[
                 'class' => Race::class,
-                'multiple' => true,
-                'expanded' => true,
+                'required' => false ,
+                // 'multiple' => true,
+                // 'expanded' => true,
                 'query_builder'=> function (EntityRepository $er){
                     return $er->createQueryBuilder('u');
                 }

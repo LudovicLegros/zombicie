@@ -12,4 +12,27 @@
         {{app.user.username}}
         {% endif %} 
     </h1>
+    <section>
+        {# --------------LOOP FOR TABLE---------- #}
+        {% for table in tables %}
+        <div class="table">
+            <h2>{{table.tableName}}</h2>
+            {# --------------LOOP FOR PROFIL---------- #}
+            {% for profil in table.profils %}
+            <div>
+                {{profil.player}}
+            </div>
+            
+            {% endfor %}
+            {{table.date|date("d/m/Y")}}
+            {# VERIFY IF USER ALREADY IN TABLE #}
+            {% if existuser == 1 %}
+                {% if table.id == tests.0.player.id %}
+                    <a class="join_btn" href="{{ path('join_table',{'id' : table.id}) }}">Rejoindre la table</a>
+                {% endif %}
+            {% endif %}
+            </form>
+        </div>
+        {% endfor %}
+    </section>
 {% endblock %}

@@ -53,13 +53,15 @@ class SurvivantRepository extends ServiceEntityRepository
                     ->leftjoin('su.races','r')
                     ->leftjoin('su.classes','cl');
 
-                    if(!empty($search->getRacename())){
+                    if($search->getRacename()!=null){
                         $query =$query  ->andWhere('r IN (:r)')
                                         ->setParameter('r',$search->getRacename());
                     }
-                    if(!empty($search->getClasseName())){
-                        $query =$query  ->orWhere('cl IN (:cl)')
-                                        ->setParameter('cl',$search->getClasseName());
+                    if($search->getClasseName()!=null){
+                        if((!$search->getClasseName()->isEmpty())){
+                            $query =$query  ->andWhere('cl IN (:cl)')
+                                            ->setParameter('cl',$search->getClasseName());
+                        }
                     }
  
                    

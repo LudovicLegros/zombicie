@@ -21,12 +21,9 @@ class SurvivantsController extends AbstractController
         $survivantFilter = new SurvivantFilter;
         $form = $this->createForm(SurvivantFilterType::class, $survivantFilter);
         $form->handleRequest($request);
-        // dd($_GET);
-
+        
         //Affichage des survivants
         $survivants = $repository->getFilter($survivantFilter);
-        // dd($survivantFilter->getClasseName());
-        // dd($survivantFilter->racename);
         
         return $this->render('survivants/survivants.html.twig', [
             'survivants' => $survivants,
