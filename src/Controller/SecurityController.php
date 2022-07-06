@@ -44,12 +44,15 @@ class SecurityController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
-        $hash = $encoder->hashPassword($username, $username->getPassword());
+            $hash = $encoder->hashPassword($username, $username->getPassword());
 
-        $username->setPassword($hash);
-        $username->setRoles(["ROLE_USER"]);
-        $manager->persist($username);
-        $manager->flush();
+            $username->setPassword($hash);
+            $username->setRoles(["ROLE_USER"]);
+            $manager->persist($username);
+            $manager->flush();
+            $this->addFlash("success","Vous avez bien été inscrit");
+
+            return $this->redirectToRoute('app_login');
         }
 
         return $this->render('security/subscribe.html.twig',[

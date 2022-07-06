@@ -39,13 +39,10 @@ main{
                 width: 70%;
             }
         }
-        
-
-
     }
 }
 
-section{
+#survivants{
     @include flex(space-between);
     flex-wrap: wrap;
 }

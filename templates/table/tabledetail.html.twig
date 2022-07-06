@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+    <h1>{{table.tableName}}</h1>
+    <section>
+        
+        {% for profil in table.profils %}
+            <article>
+                {{profil.player}}
+            </article>
+        {% endfor %}
+      
+    </section>
+
+{% endblock %}

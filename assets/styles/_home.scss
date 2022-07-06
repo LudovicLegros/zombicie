@@ -1,0 +1,20 @@
+h1{
+    font-family: 'medievalsharp';
+    text-align: center;
+    margin:1em;
+}
+
+#home{
+    @include flex(space-around);
+    
+    .table{
+        @include flex(space-between);
+        text-align: center;
+        flex-direction: column;
+        margin:1em;
+        padding:1em;
+        width: 300px;
+        height: 300px;
+        border: 1px solid rgb(177, 176, 176)
+    }
+}

@@ -3,6 +3,12 @@
 {% block title %}Connexion{% endblock %}
 
 {% block body %}
+{#---- ALERT AREA -----#}
+{% for message in app.flashes('success') %}
+    <p class="success">
+        {{message}}
+    </p>
+{% endfor %}
 <section>
     <form method="post">
         {% if error %}

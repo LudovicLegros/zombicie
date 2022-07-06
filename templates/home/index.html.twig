@@ -7,16 +7,19 @@
 </div>
 {% endblock %}
 {% block body %}
-    <h1>Hellow
+    <h1>Bonjour aventurier(e) 
         {% if app.user %} 
         {{app.user.username}}
         {% endif %} 
     </h1>
-    <section>
+    <section id="home">
         {# --------------LOOP FOR TABLE---------- #}
         {% for table in tables %}
         <div class="table">
-            <h2>{{table.tableName}}</h2>
+            <div>
+                <h2>{{table.tableName}}</h2>
+                <p>Le {{table.date|date("d/m/Y")}}</p>
+            </div>
             {# --------------LOOP FOR PROFIL---------- #}
             {% for profil in table.profils %}
             <div>
@@ -24,14 +27,17 @@
             </div>
             
             {% endfor %}
-            {{table.date|date("d/m/Y")}}
+            
             {# VERIFY IF USER ALREADY IN TABLE #}
             {% if existuser == 1 %}
-                {% if table.id == tests.0.player.id %}
+            {# {{dump(tests.0 is not defined)}} #}
+                {% if tests.0 is not defined %}
+                    <a class="join_btn" href="{{ path('join_table',{'id' : table.id}) }}">Rejoindre la table</a>
+                {% elseif table.id == tests.0.player.id %}
                     <a class="join_btn" href="{{ path('join_table',{'id' : table.id}) }}">Rejoindre la table</a>
                 {% endif %}
             {% endif %}
-            </form>
+            <a href="{{ path('detail_table',{'id' : table.id}) }}">Voir la table en détails</a>
         </div>
         {% endfor %}
     </section>

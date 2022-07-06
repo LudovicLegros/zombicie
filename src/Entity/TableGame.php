@@ -21,7 +21,7 @@ class TableGame
     #[ORM\Column(type: 'date')]
     private $date;
 
-    #[ORM\OneToMany(mappedBy: 'tableParty', targetEntity: Profil::class)]
+    #[ORM\OneToMany(mappedBy: 'tableParty', targetEntity: Profil::class,cascade:["remove"])]
     private $profils;
 
     public function __construct()
