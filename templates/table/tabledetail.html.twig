@@ -9,12 +9,27 @@
         {% for profil in table.profils %}
             <article>
                 {{profil.player}}
+                {% set nbSurvivantsChoosen = 0 %}
                 {% for survivant in profil.profilsurvivants %}
-                    <p>{{survivant.nom}}</p>
+                   
+                    {% if app.user %}
+                        {% if app.user.id == profil.player.id %}
+                            <p>{{survivant.nom}}</p>
+                            <a href="{{ path('survivant_delesect',{'ids' : survivant.id, 'id' : profil.id}) }}"><i class="fa-solid fa-xmark"></i></a>       
+                        {% endif %}
+                    {% endif %}  
+                    {% set nbSurvivantsChoosen = loop.index %}
                 {% endfor %}
-
-                {% if app.user.id == profil.player.id %}
-                    <a href="{{ path('survivant_route',{'id' : profil.id}) }}">choisissez votre personnage</a>
+                
+                {# TEST IF LIMIT OF CHOOSEN SURVIVANT > 3 #}
+                {% if app.user %}
+                    {% if app.user.id == profil.player.id %}
+                        {% if nbSurvivantsChoosen >= 3 %}
+                        <p>Vous avez choisi trop de personnages</p>                         
+                        {% else %}
+                        <a href="{{ path('survivant_route',{'id' : profil.id}) }}">choisissez votre personnage</a>
+                        {% endif %}
+                    {% endif %}
                 {% endif %}
                 
             </article>

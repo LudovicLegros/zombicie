@@ -41,4 +41,21 @@ class TableController extends AbstractController
             'id' => $thisTable
         ]);
     }
+
+    #[Route('/tablemanage/survivant_unchoose/{ids}/{id}', name: 'survivant_delesect')]
+    public function survivantUnchoose(Profil $profil, EntityManagerInterface $manager, SurvivantRepository $repo,$ids): Response
+    {
+        $thisTable =$profil->getTableParty()->getId();
+        $survivant = $repo->find($ids);
+
+        $profil->removeProfilsurvivant($survivant);
+        
+        $manager->persist($profil);
+        $manager->flush();
+
+
+        return $this->redirectToRoute('detail_table' , [
+            'id' => $thisTable
+        ]);
+    }
 }

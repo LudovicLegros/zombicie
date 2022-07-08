@@ -49,12 +49,10 @@
                     {% for classe in survivant.classes %}
                         <img src="{{asset('images/class/' ~ classe.className ~'.png')}}" title="{{classe.className}}" alt="icone pour la classe {{classe.className}}">
                     {% endfor %}
-                    {# {{(dump(tableId))}} #}
+                    
                     {% if profil != null %}
                         {% if profil.player.id == app.user.id %}
-                        <a href="{{ path('survivant_add',{'ids' : survivant.id, 'id' : profil.id}) }}">Ajouter</a>
-                        
-                            {# <a href="{{ path('survivant_add',{'id' : survivant.id,'tableid' : tableId}) }}">Ajouter</a> #}
+                            <a href="{{ path('survivant_add',{'ids' : survivant.id, 'id' : profil.id}) }}">Ajouter</a>
                         {% endif %}
                     {% endif %}
                 </div>

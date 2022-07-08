@@ -41,12 +41,9 @@
             {% for profil in table.profils %}
             <div>        
                 {{profil.player}}
-            </div>
-                
-                
+            </div>    
             {% endfor %}
-
-
+            
             <a href="{{ path('detail_table',{'id' : table.id}) }}">Voir la table en détails</a>
         
 
