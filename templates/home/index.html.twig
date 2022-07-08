@@ -32,7 +32,7 @@
                     {% endfor %}
                     {% if flag != 1 %}
             
-                        <a class="join_btn" href="{{ path('join_table',{'id' : table.id}) }}">Rejoindre la table</a>   
+                        <a class="btn_join" href="{{ path('join_table',{'id' : table.id}) }}">Rejoindre la table <i class="fa-solid fa-right-to-bracket"></i></a>   
                     {% endif %}
                 {% endif %}
             </div>
@@ -44,7 +44,7 @@
             </div>    
             {% endfor %}
             
-            <a href="{{ path('detail_table',{'id' : table.id}) }}">Voir la table en détails</a>
+            <a class="btn" href="{{ path('detail_table',{'id' : table.id}) }}">Voir la table</a>
         
 
         </div>

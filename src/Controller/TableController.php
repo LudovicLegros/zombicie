@@ -28,11 +28,11 @@ class TableController extends AbstractController
     #[Route('/tablemanage/survivant_add/{ids}/{id}', name: 'survivant_add')]
     public function survivantAdd(Profil $profil, EntityManagerInterface $manager, SurvivantRepository $repo,$ids): Response
     {
-        $thisTable =$profil->getTableParty()->getId();
-        $survivant = $repo->find($ids);
-
-        $profil->addProfilsurvivant($survivant);
+        $thisTable  = $profil->getTableParty()->getId();    
+        $survivant  = $repo->find($ids);
         
+        $profil->addProfilsurvivant($survivant);
+      
         $manager->persist($profil);
         $manager->flush();
 

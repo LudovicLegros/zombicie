@@ -28,34 +28,41 @@ class SurvivantsController extends AbstractController
         
         //Affichage des survivants
         $survivants = $repository->getFilter($survivantFilter);
-
-        //BLOC TESSTT-----
-        // dd($profil);
-        // $allow = 0;
-        if($profil != null){
-              
-            // $tests = $repo->findBy(['tableParty' => $id]);
-            // dd($table);
-            // foreach($table->getProfils() as $guest){
-            //     // dd($guest);
-                if($profil->getPlayer()->getId() == $this->getUser()->getId()){
-            //         $allow = 1;
-            //         break;          
-                }else{
-                    return $this->redirectToRoute('survivants');
-                }
-
-            //     if($allow = 0){
-            //         return $this->redirectToRoute('survivants');
-            //     }
-            // }
-        }
-        //BLOC TESSTT-----
+        $survivantArray = [];
         
+
+        
+        if($profil != null){
+
+        //ARRAY OF SURVIVANT
+        $repoSurvivant = $repo->find($profil);
+        $thisProfilSurvivants = $repoSurvivant->getProfilsurvivants();
+        foreach($thisProfilSurvivants as $survivant){
+            $survivantArray[] = $survivant->getId();
+        }
+
+            //COUNT SURVIVANT BY PROFIL
+            $thisProfil = $profil->getId();
+            $count      = $repo->countSurvivantByProfilPlayer($thisProfil);
+            $nbOfSurvivant = $count[0];
+        
+            if($nbOfSurvivant < 4){
+                    if($profil != null){
+                        
+                        if($profil->getPlayer()->getId() != $this->getUser()->getId()){
+                            return $this->redirectToRoute('survivants');       
+                        }
+                    }
+                }else{
+                    return $this->redirectToRoute('home');
+                }
+        }
+
         return $this->render('survivants/survivants.html.twig', [
             'survivants'    => $survivants,
             'form'          => $form->createView(),
             'profil'        => $profil,
+            'survivantArray'=> $survivantArray,
             // 'tableId'       => $this->getProfil(),
         ]);
     }

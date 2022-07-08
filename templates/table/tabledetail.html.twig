@@ -4,30 +4,46 @@
 
 {% block body %}
     <h1>{{table.tableName}}</h1>
-    <section>
+    <section id="table_detail">
         
         {% for profil in table.profils %}
             <article>
-                {{profil.player}}
-                {% set nbSurvivantsChoosen = 0 %}
-                {% for survivant in profil.profilsurvivants %}
-                   
-                    {% if app.user %}
-                        {% if app.user.id == profil.player.id %}
-                            <p>{{survivant.nom}}</p>
-                            <a href="{{ path('survivant_delesect',{'ids' : survivant.id, 'id' : profil.id}) }}"><i class="fa-solid fa-xmark"></i></a>       
-                        {% endif %}
-                    {% endif %}  
-                    {% set nbSurvivantsChoosen = loop.index %}
-                {% endfor %}
+                <h2>{{profil.player}}</h2>
                 
+                {% set nbSurvivantsChoosen = 0 %}
+                {# LOOP SURVIVANT #}
+                <div class="table_list">
+                    {% for survivant in profil.profilsurvivants %}            
+                        <div class="table_singular">
+                            <div class="singular_left">
+                                <img src="{{asset('uploads/images/' ~ survivant.image)}}" alt="portrait du survivant {{survivant.nom}}">
+                                <p>{{survivant.nom}}</p>
+                            </div>
+                            {# BLOC CLASSES #}
+                            <div class="classlogo_table">
+                            {% for classe in survivant.classes %}
+                                <img src="{{asset('images/class/' ~ classe.className ~'.png')}}" title="{{classe.className}}" alt="icone pour la classe {{classe.className}}">
+                            {% endfor %}
+                            
+                            {# BLOC CONDITION REMOVE SURVIVANT FROM PROFIL #}
+                            {% if app.user %}
+                                {% if app.user.id == profil.player.id %}                               
+                                    <a class="btn_delete" href="{{ path('survivant_delesect',{'ids' : survivant.id, 'id' : profil.id}) }}"><i class="fa-solid fa-xmark"></i></a>       
+                                {% endif %}
+                            {% endif %}  
+                            {% set nbSurvivantsChoosen = loop.index %}  
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+
                 {# TEST IF LIMIT OF CHOOSEN SURVIVANT > 3 #}
                 {% if app.user %}
                     {% if app.user.id == profil.player.id %}
                         {% if nbSurvivantsChoosen >= 3 %}
                         <p>Vous avez choisi trop de personnages</p>                         
                         {% else %}
-                        <a href="{{ path('survivant_route',{'id' : profil.id}) }}">choisissez votre personnage</a>
+                        <a class="btn" href="{{ path('survivant_route',{'id' : profil.id}) }}">choisissez votre personnage</a>
                         {% endif %}
                     {% endif %}
                 {% endif %}

@@ -54,6 +54,19 @@ class ProfilRepository extends ServiceEntityRepository
     $results = $query->getQuery()->getSingleScalarResult();
 
     return [$results];
+    }
+
+    public function countSurvivantByProfilPlayer($thisprofil): array
+    {
+    $qb = $this->createQueryBuilder('profil');
+    $query = $qb->select('count(profil.id)')
+                ->Where('profil.id = :p')
+                ->setParameter('p',$thisprofil);
+
+    $results = $query->getQuery()->getSingleScalarResult();
+
+    return [$results];
+    }
 
 //    public function test($thisplayer): array
 //    {
@@ -75,7 +88,7 @@ class ProfilRepository extends ServiceEntityRepository
     // }
     
        
-   }
+   
 
 //    public function findOneBySomeField($value): ?Profil
 //    {

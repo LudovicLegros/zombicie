@@ -1,0 +1,59 @@
+#table_detail{
+    @include flex();
+    flex-wrap: wrap;
+
+    h2{
+        font-family: medievalsharp;
+        color:$color1
+    }
+
+    article{
+        margin: 2em;
+        @include flex();
+        flex-direction: column;
+        height: 350px;
+        width: 350px;
+
+        .table_list{
+            @include flex(center);
+            flex-direction: column;
+            height: 100%;
+            width: 100%;
+
+            .table_singular{
+                @include flex(space-between,center);
+                padding:4px 7px;  
+                width: 100%;
+                margin: 5px 0px;
+                background-color: $color3 ;
+
+                .singular_left{
+                    @include flex(center,center);
+                    > img{
+                        height:50px;
+                        margin-right: 1em;
+                    } 
+
+                }
+                   
+            }          
+        }
+    }
+}
+
+.classlogo_table{
+    @include flex(center,center);
+
+    a{
+        margin-left: 1em;
+    }
+
+    img{
+        height: 25px;
+    }
+}
+
+.chosen{
+    border:1px solid green;
+    box-shadow: 0px 0px 2px green;
+}

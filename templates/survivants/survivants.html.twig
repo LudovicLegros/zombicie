@@ -16,7 +16,11 @@
         {% for survivant in survivants %}
 
         {# SURVIVANT CARDS #}
-        <article>   
+        <article 
+        {% if survivant.id in survivantArray %}
+            class="chosen"
+        {% endif %}
+        >   
             <div>
                 <img src="{{asset('uploads/images/' ~ survivant.image)}}" alt="portrait du survivant {{survivant.nom}}">
             </div>
@@ -51,8 +55,10 @@
                     {% endfor %}
                     
                     {% if profil != null %}
-                        {% if profil.player.id == app.user.id %}
-                            <a href="{{ path('survivant_add',{'ids' : survivant.id, 'id' : profil.id}) }}">Ajouter</a>
+                        {% if survivant.id not in survivantArray %}
+                            {% if profil.player.id == app.user.id %}
+                                <a class="btn" href="{{ path('survivant_add',{'ids' : survivant.id, 'id' : profil.id}) }}">Ajouter</a>
+                            {% endif %}       
                         {% endif %}
                     {% endif %}
                 </div>
