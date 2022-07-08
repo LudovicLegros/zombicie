@@ -9,6 +9,14 @@
         {% for profil in table.profils %}
             <article>
                 {{profil.player}}
+                {% for survivant in profil.profilsurvivants %}
+                    <p>{{survivant.nom}}</p>
+                {% endfor %}
+
+                {% if app.user.id == profil.player.id %}
+                    <a href="{{ path('survivant_route',{'id' : profil.id}) }}">choisissez votre personnage</a>
+                {% endif %}
+                
             </article>
         {% endfor %}
       

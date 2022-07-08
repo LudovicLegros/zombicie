@@ -21,27 +21,34 @@
             <div>
                 <h2>{{table.tableName}}</h2>
                 <p>Le {{table.date|date("d/m/Y")}}</p>
+                            {# --------VERIFIER SI LE USER EXISTE DANS LA TABLE------- #}
+                {% set flag ='' %}
+                {% if app.user %}
+                    {% for profil in table.profils %} 
+                        {% if profil.player != app.user.username and flag !=1 %}
+                        {% elseif profil.player == app.user.username and flag !=1 %}
+                            {% set flag = 1 %}
+                        {% endif %}        
+                    {% endfor %}
+                    {% if flag != 1 %}
+            
+                        <a class="join_btn" href="{{ path('join_table',{'id' : table.id}) }}">Rejoindre la table</a>   
+                    {% endif %}
+                {% endif %}
             </div>
             
             {# --------------LOOP FOR PROFIL---------- #}
             {% for profil in table.profils %}
             <div>        
                 {{profil.player}}
-                {% if app.user.username ==  profil.player %}
-                {% endif %}
             </div>
                 
                 
             {% endfor %}
-            {# --------VERIFIER SI LE USER EXISTE DANS LA TABLE------- #}
-            {% set flag ='' %}
-            {% for profil in table.profils %} 
-                {% if profil.player == app.user.username and flag !=1 %}
-                    <a class="join_btn" href="{{ path('join_table',{'id' : table.id}) }}">Rejoindre la table</a>
-                    {% set flag = 1 %}
-                {% endif %}
-            {% endfor %}
+
+
             <a href="{{ path('detail_table',{'id' : table.id}) }}">Voir la table en détails</a>
+        
 
         </div>
         {% endfor %}
