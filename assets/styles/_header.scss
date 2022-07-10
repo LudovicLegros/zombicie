@@ -14,7 +14,7 @@ header{
     height: 10vh;
     padding:1em;
     position:relative;
-    z-index: 2;
+    z-index: 3;
     @include flex(flex-start);
 
     nav{
@@ -38,10 +38,10 @@ header{
             font-size: 18px;
             // font-family: medievalsharp;
             font-weight: 700;
-            transition:color 0.5s ease-in-out;
+            transition:color 0.3s ease-in-out;
 
             &:hover{
-                color:rgb(119, 34, 34);
+                color:$color2;
             }
         }
     }

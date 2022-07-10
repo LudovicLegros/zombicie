@@ -16,12 +16,19 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class TableController extends AbstractController
 {
     #[Route('/table/{id}', name: 'detail_table')]
-    public function index(TableGameRepository $repository, TableGame $table, $id): Response
+    public function index(TableGameRepository $repository, TableGame $table, ProfilRepository $repo, $id): Response
     {
+        //COUNT SURVIVANT BY PROFIL
+        // $profil = $repository->find()
+        // $thisProfil = $profil->getId();
+
+        // $count      = $repo->countSurvivantByProfilPlayer($thisProfil);
+        // $nbOfSurvivant = $count[0];
         
         // $thistable = $repository->find($id);
         return $this->render('table/tabledetail.html.twig', [
             'table' => $table,
+            // 'countSurvivant'=> $nbOfSurvivant
         ]);
     }
 

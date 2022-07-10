@@ -11,13 +11,14 @@ main{
         height: 100%;
         background-color: #F2F1F1;
         position:fixed;
+        z-index: 2;
 
-    form[name="survivant_filter"]{
+        form[name="survivant_filter"]{
     
-        width:100%;
-        height: 100%;
-        @include flex(space-around);
-        flex-direction: column;
+            width:100%;
+            height: 100%;
+            @include flex(space-around);
+            flex-direction: column;
 
         div{
 
@@ -79,7 +80,18 @@ article {
             cursor:pointer;
             z-index: 1;
             margin:2px 0 0 2px;
+            position:relative;
             // transition: all 0.3s ease-in-out;
+
+            &:before{
+                content:"";
+                position:absolute;
+                top:0px;
+                right:0px;
+                height: 1px;
+                width: 0px;
+                transition:all 0.3s ease-in-out;
+            }
 
             span{
                 // display:none;
@@ -107,12 +119,18 @@ article {
         background: linear-gradient(90deg, rgba(2,0,36,0) 50%, rgba(9,9,121,0.26) 80%, rgba(9,9,121,1) 100%);
         border-bottom:1px solid rgb(9,9,121);
         margin-bottom: 6px;
+        &:before{
+            background-color: rgb(9,9,121);;
+        }
         
     }
     .yellow{
         background: linear-gradient(90deg, rgba(2,0,36,0) 50%, rgba(149, 177, 13, 0.26) 80%, rgb(204, 218, 15) 100%);
         border-bottom:1px solid rgb(204, 218, 15);
         margin-bottom: 6px;
+        &:before{
+            background-color: rgb(204, 218, 15);
+        }
 
     }
     .orange{
@@ -121,10 +139,16 @@ article {
         &:nth-child(4){
             margin-bottom: 6px;
         }
+        &:before{
+            background-color: rgb(156, 86, 11);
+        }
     }
     .red{
         background: linear-gradient(90deg, rgba(2,0,36,0) 50%, rgba(168, 15, 15, 0.26) 80%, rgb(168, 15, 15) 100%);
         border-bottom:1px solid rgb(168, 15, 15);
+        &:before{
+            background-color: rgb(168, 15, 15);
+        }
     }
 
 }
@@ -142,3 +166,7 @@ article {
     }
 }
 
+
+li:hover::before{
+    width: 100%;
+}

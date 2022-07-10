@@ -40,9 +40,7 @@ class ProfilRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Profil[] Returns an array of Profil objects
-//     */
+    // COUNT THE PROFIL BY TABLE
     public function countTable($thisplayer): array
     {
     $qb = $this->createQueryBuilder('profil');
@@ -56,6 +54,7 @@ class ProfilRepository extends ServiceEntityRepository
     return [$results];
     }
 
+    // COUNT SURVIVANT CHOOSEN BY CURRENT PLAYER
     public function countSurvivantByProfilPlayer($thisprofil): array
     {
     $qb = $this->createQueryBuilder('profil');

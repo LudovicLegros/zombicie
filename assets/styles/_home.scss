@@ -6,6 +6,7 @@ h1{
 
 #home{
     @include flex(space-around);
+    flex-wrap: wrap;
     
     .table{
         @include flex(space-between);

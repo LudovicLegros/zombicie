@@ -1,0 +1,88 @@
+@media screen and (max-width: 840px) {
+
+    main{
+        padding-left: 0px;
+
+        .filter{
+            padding: 7vh 0 0 0;
+            left:0px;
+            top:0px;
+            width: 100%;
+            height: 200px;
+            background-color: #F2F1F1;
+            position:fixed;
+
+            form[name="survivant_filter"]{
+                flex-direction: row;
+                justify-content:space-between;
+            }
+
+            button{
+                position:absolute;
+                bottom:5px;
+                left:50%;
+                transform:translateX(-50%);
+            }
+        }    
+    }
+
+    #survivants{
+        flex-direction: column;
+        flex-wrap: nowrap;
+      
+        margin-top: 150px;
+
+    }
+
+    #survivant_filter_ClasseName {
+        transform-origin:left;
+        transform:rotate(-90deg) translate(-29px,-45px);
+        height: 65vw;
+        // flex-wrap: nowrap;
+
+        label{
+            // width: 20px;
+            margin-top:2em;
+            transform:rotate(90deg) translate(-27px,48px);
+        }
+        
+    }
+
+    form button{
+        width: auto;
+    }
+}
+
+@media screen and (max-width: 620px) {
+
+    main .filter{
+        height: 250px;
+    }
+    main .filter form[name=survivant_filter] div{
+        flex-direction: column;
+    }
+
+
+
+    #survivants article{
+        flex-direction: column;
+        width: 400px;
+    }
+
+    main .filter form[name=survivant_filter] div #survivant_filter_ClasseName label{
+        margin-top:0px;
+    }
+
+    #survivant_filter_ClasseName{
+        position:absolute;
+        top:46px;
+        left:251px;
+        width: 100vw;
+    }
+
+        label{
+            // width: 20px;
+            margin-top:2em;
+            transform:rotate(90deg) translate(-27px,48px);
+        }
+}
