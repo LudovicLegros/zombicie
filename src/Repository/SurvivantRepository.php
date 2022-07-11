@@ -42,8 +42,9 @@ class SurvivantRepository extends ServiceEntityRepository
 
     public function getFilter(SurvivantFilter $search){
         $qb = $this->createQueryBuilder('su');
-        $query = $qb->select('su,r,skb,sky,sko1,sko2,skr1,skr2,skr3,cl')
+        $query = $qb->select('su,r,skb,skb2,sky,sko1,sko2,skr1,skr2,skr3,cl')
                     ->leftjoin('su.blueskill1','skb')
+                    ->leftjoin('su.blueskill2','skb2')
                     ->leftjoin('su.yellowskill','sky')
                     ->leftjoin('su.orangeskill1','sko1')
                     ->leftjoin('su.orangeskill2','sko2')

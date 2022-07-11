@@ -21,8 +21,9 @@
             class="chosen"
         {% endif %}
         >   
-            <div>
+            <div class="portrait">
                 <img src="{{asset('uploads/images/' ~ survivant.image)}}" alt="portrait du survivant {{survivant.nom}}">
+                <p>Voir l'histoire</p>
             </div>
             <div class="details">
                 <h2>{{survivant.nom}}</h2>
@@ -30,13 +31,18 @@
                     <li class="blue">{{survivant.blueskill1.skillName}}
                         <span>{{survivant.blueskill1.description}}</span>
                     </li>
+                    {% if survivant.blueskill2.skillName is defined %}
+                        <li class="blue">{{survivant.blueskill2.skillName}}
+                            <span>{{survivant.blueskill2.description}}</span>
+                        </li>
+                    {% endif %}
                     <li class="yellow">{{survivant.yellowskill.skillName}}
                         <span>{{survivant.yellowskill.description}}</span>
                     </li>
                     <li class="orange">{{survivant.orangeskill1.skillName}}
                         <span>{{survivant.orangeskill1.description}}</span>
                     </li>
-                    <li class="orange">{{survivant.orangeskill2.skillName}}
+                    <li class="orange orange2">{{survivant.orangeskill2.skillName}}
                         <span>{{survivant.orangeskill2.description}}</span>
                     </li>
                     <li class="red">{{survivant.redskill1.skillName}}

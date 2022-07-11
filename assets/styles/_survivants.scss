@@ -1,8 +1,6 @@
 main{
-    // @include flex($align:stretch);
-    // height: 100%;
     padding-left: 200px;
-
+// FILTER STYLE
     .filter{
         padding: 7vh 0 0 1em;
         left:0px;
@@ -51,6 +49,7 @@ main{
     } 
 }
 
+// SURVIVANT STYLE PART
 #survivants{
     @include flex(space-between);
     flex-wrap: wrap;
@@ -63,9 +62,47 @@ article {
     border:1px solid rgb(214, 213, 213);
     margin-bottom: 2em;
 
-    img{
-        height: 260px;
+    .portrait{
+        position:relative;
+        
+
+        img{
+            height: 260px;
+            opacity: 1;
+            transition: all 0.3s ease-in-out;
+        }
+        p{
+            font-size: 20px;
+            display:block;
+            padding: 12px 20px;
+            position:absolute;
+            top:50%;
+            left:50%;
+            background-color: $color3;
+            transform:translate(-50%,-50%);
+            visibility:hidden;
+            opacity: 0;
+            border: 1px solid $color2;
+            transition: all 0.3s ease-in-out;
+
+            &:hover{
+                cursor:pointer;
+            }
+        }
+
+        &:hover img{
+            opacity: 50%;
+            cursor: pointer;
+        }
+
+        &:hover p{
+            visibility: visible;
+            opacity: 1;
+        }
+
     }
+
+   
 
     .details{
         padding:1em;
@@ -118,9 +155,8 @@ article {
     .blue{
         background: linear-gradient(90deg, rgba(2,0,36,0) 50%, rgba(9,9,121,0.26) 80%, rgba(9,9,121,1) 100%);
         border-bottom:1px solid rgb(9,9,121);
-        margin-bottom: 6px;
         &:before{
-            background-color: rgb(9,9,121);;
+            background-color: rgb(9,9,121);
         }
         
     }
@@ -128,6 +164,7 @@ article {
         background: linear-gradient(90deg, rgba(2,0,36,0) 50%, rgba(149, 177, 13, 0.26) 80%, rgb(204, 218, 15) 100%);
         border-bottom:1px solid rgb(204, 218, 15);
         margin-bottom: 6px;
+        margin-top:6px;
         &:before{
             background-color: rgb(204, 218, 15);
         }
@@ -136,13 +173,15 @@ article {
     .orange{
         background: linear-gradient(90deg, rgba(2,0,36,0) 50%, rgba(156, 86, 11, 0.26) 80%, rgb(156, 86, 11) 100%);
         border-bottom:1px solid rgb(156, 86, 11);
-        &:nth-child(4){
-            margin-bottom: 6px;
-        }
         &:before{
             background-color: rgb(156, 86, 11);
         }
     }
+
+    .orange2{
+        margin-bottom: 6px;
+    }
+
     .red{
         background: linear-gradient(90deg, rgba(2,0,36,0) 50%, rgba(168, 15, 15, 0.26) 80%, rgb(168, 15, 15) 100%);
         border-bottom:1px solid rgb(168, 15, 15);
@@ -157,8 +196,10 @@ article {
     @include flex(flex-start,center);
     width:100%;
     margin-top:1em;
+    
     img{
         height: 25px;
+        margin-right:2px;
     }
 
     a{
