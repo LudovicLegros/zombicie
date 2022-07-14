@@ -23,6 +23,7 @@
         >   
             <div class="portrait">
                 <img src="{{asset('uploads/images/' ~ survivant.image)}}" alt="portrait du survivant {{survivant.nom}}">
+                <div class="story"><div class="text"><h3>{{survivant.nom}}:</h3>{{survivant.description | raw }}</div ></div>
                 <p>Voir l'histoire</p>
             </div>
             <div class="details">
@@ -74,4 +75,33 @@
         {% endfor %}
     </section>
 </main>
+<script >
+    let storys  = document.querySelectorAll('.story');
+    let imgs = document.querySelectorAll('.portrait');
+    
+
+    imgs.forEach(item=>{
+        let story = item.children[1];
+
+        item.addEventListener('click',event  => {
+            story.classList.toggle('storyVisible');
+        })
+        story.addEventListener('click',event  => {
+            story.classList.toggle('storyVisible');
+            event.stopPropagation(); 
+        })
+        // console.log(item);
+        // console.log(item.children[1]);
+    })
+
+    // storys.forEach(item=>{
+    //     item.addEventListener('click',event  => {
+    //         item.classList.toggle('storyVisible');
+
+    //     })
+        
+    // })
+
+
+</script>
 {% endblock %}
