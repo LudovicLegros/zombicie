@@ -17,6 +17,16 @@ header{
     z-index: 3;
     @include flex(flex-start);
 
+    .btn_menu{
+        display:none;
+    }
+
+    .dropdown{
+        opacity:1 !important;
+        height: auto !important;
+        
+    }
+
     nav{
         width: 100%;
     }

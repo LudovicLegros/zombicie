@@ -2,8 +2,15 @@ main{
     padding-left: 200px;
 // FILTER STYLE
 
-    #survivant_filter_ClasseName input{
-        visibility: hidden;
+    #survivant_filter_ClasseName {
+
+        position:absolute;
+        left:20px;
+        top:280px;
+
+        input{
+            visibility: hidden;
+        }
     }
 
     .filter{
@@ -16,10 +23,14 @@ main{
         position:fixed;
         z-index: 2;
 
+        .required{
+            display:none;
+        }
+
         .class_checkbox{
             position:absolute;
             left:20px;
-            top:340px;
+            top:290px;
 
             li{
                 margin-bottom: 5px;
@@ -74,6 +85,8 @@ main{
         }
     } 
 }
+
+
 
 // SURVIVANT STYLE PART
 #survivants{

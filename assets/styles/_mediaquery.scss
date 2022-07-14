@@ -1,5 +1,5 @@
 @media screen and (max-width: 840px) {
-
+// ZONE FILTER MEDIAQUERY
     main{
         padding-left: 0px;
 
@@ -26,6 +26,7 @@
         }    
     }
 
+    // ZONE SURVIVANT MEDIAQUERY
     #survivants{
         flex-direction: column;
         flex-wrap: nowrap;
@@ -35,15 +36,14 @@
     }
 
     #survivant_filter_ClasseName {
-        transform-origin:left;
-        transform:rotate(-90deg) translate(-29px,-45px);
-        height: 65vw;
+        // transform-origin:left;
+        // transform:rotate(-90deg) translate(-29px,-45px);
+        // height: 65vw;
         // flex-wrap: nowrap;
 
         label{
             // width: 20px;
-            margin-top:2em;
-            transform:rotate(90deg) translate(-27px,48px);
+           visibility: hidden;
         }
         
     }
@@ -51,9 +51,26 @@
     form button{
         width: auto;
     }
+
+    main .filter .class_checkbox{
+    @include flex();
+    top:110px;
+    left:240px;
+
+    li{
+        margin-right: 10px;
+    }
+  
+}
 }
 
 @media screen and (max-width: 620px) {
+
+    main .filter form[name=survivant_filter]{
+        flex-direction: column ;
+        justify-content: flex-start ;
+        padding-top: 1em;
+    }
 
     main .filter{
         height: 250px;
@@ -69,20 +86,53 @@
         width: 400px;
     }
 
-    main .filter form[name=survivant_filter] div #survivant_filter_ClasseName label{
-        margin-top:0px;
+    main .filter .class_checkbox{
+        left:50%;
+        top:120px;
+        transform:translateX(-50%);
     }
 
-    #survivant_filter_ClasseName{
-        position:absolute;
-        top:46px;
-        left:251px;
-        width: 100vw;
-    }
+    header{
+        background-color:unset;
 
-        label{
-            // width: 20px;
-            margin-top:2em;
-            transform:rotate(90deg) translate(-27px,48px);
+        nav ul{
+            // opacity:0;
+            position:fixed;
+            height: 0px;
+            top:65px;
+            flex-direction: column;
+            align-items: flex-end;
+            transition: all 0.3s ease-in-out;
+            overflow: hidden;
+            // clip: rect(auto, auto, auto, auto);
+            
+
+            li{
+                border:1px solid white;
+                width: 250px;
+                background-color: $color1;
+            }
         }
+    }
+    
+    main .filter {
+        padding-top:0;
+        height: 200px;
+    }
+
+    header .btn_menu{
+        display:block;
+        color:$color3;
+        font-size:25px;
+        background-color: $color1;
+        padding:4px;
+        border-radius: 2px;
+        position:fixed;
+        top:1em;
+        right:8px;
+    }
+
+    article ul li span{
+        display:none;
+    }
 }

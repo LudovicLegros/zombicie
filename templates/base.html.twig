@@ -32,10 +32,21 @@
                     {% endif %}
                 </ul>
             </nav>
+            <div class="btn_menu">
+                <i class="fa-solid fa-scroll"></i>
+            </div>
             {% endblock %}
         </header>
         
 
         {% block body %}{% endblock %}
+        <script>
+            let btnMenu = document.querySelector('.btn_menu');
+            let menu = document.querySelector('nav ul');
+
+            btnMenu.addEventListener('click',event  => {
+                menu.classList.toggle('dropdown'); 
+            })
+        </script>
     </body>
 </html>
