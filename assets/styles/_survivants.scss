@@ -1,6 +1,11 @@
 main{
     padding-left: 200px;
 // FILTER STYLE
+
+    #survivant_filter_ClasseName input{
+        visibility: hidden;
+    }
+
     .filter{
         padding: 7vh 0 0 1em;
         left:0px;
@@ -10,6 +15,27 @@ main{
         background-color: #F2F1F1;
         position:fixed;
         z-index: 2;
+
+        .class_checkbox{
+            position:absolute;
+            left:20px;
+            top:340px;
+
+            li{
+                margin-bottom: 5px;
+            }
+        }
+
+        img{
+            width: 25px;
+            padding:2px;
+            border:1px solid $color2;
+            
+        }
+
+        .cb_background{
+            background-color: $color3;
+        }
 
         form[name="survivant_filter"]{
     
@@ -259,3 +285,4 @@ article {
 li:hover::before{
     width: 100%;
 }
+

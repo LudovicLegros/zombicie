@@ -9,8 +9,18 @@
 
         {{ form_row (form.raceName) }}
         {{ form_row (form.ClasseName) }}
+        <ul class="class_checkbox">
+            <li><img src="{{asset('images/class/Mêlée.png')}}" alt="" title="Mêlée"></li>
+            <li><img src="{{asset('images/class/Mage.png')}}" alt="" title="Mage"></li>
+            <li><img src="{{asset('images/class/Archer.png')}}" alt="" title="Archer"></li>
+            <li><img src="{{asset('images/class/Protecteur.png')}}" alt="" title="Protecteur"></li>
+            <li><img src="{{asset('images/class/Soutient.png')}}" alt="" title="Soutient"></li>
+            <li><img src="{{asset('images/class/Puissant.png')}}" alt="" title="Puissant"></li>
+            <li><img src="{{asset('images/class/Agile.png')}}" alt="" title="Agile"></li>
+        </ul>
         <button>Filtrer</button>
     {{ form_end (form)}} 
+  
     </div>
     <section id="survivants">
         {% for survivant in survivants %}
@@ -90,17 +100,32 @@
             story.classList.toggle('storyVisible');
             event.stopPropagation(); 
         })
-        // console.log(item);
-        // console.log(item.children[1]);
     })
 
-    // storys.forEach(item=>{
-    //     item.addEventListener('click',event  => {
-    //         item.classList.toggle('storyVisible');
 
-    //     })
-        
-    // })
+    let listLength = document.querySelectorAll('.class_checkbox li').length;
+
+    for (let i = 1; i<= listLength; i++){
+        let newCheckBox = document.querySelector('.class_checkbox>li:nth-child('+i+') img');
+        let checkBox = document.querySelector('[for="survivant_filter_ClasseName_'+i+'"]');
+        let inputCheck = document.querySelector('#survivant_filter_ClasseName_'+i+'');
+
+        newCheckBox.addEventListener('click',event  => {
+        checkBox.click(); 
+        })
+
+        checkBox.addEventListener('click',event  => {
+        newCheckBox.classList.toggle('cb_background');
+        })
+
+        if(inputCheck.checked){
+            newCheckBox.classList.add('cb_background');
+        }
+      
+    }
+
+
+
 
 
 </script>
