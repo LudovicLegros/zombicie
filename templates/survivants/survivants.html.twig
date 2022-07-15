@@ -67,7 +67,8 @@
                     </li>
                 </ul>
                 <div class="classlogo">
-                    {% for classe in survivant.classes %}
+                
+                    {% for classe in surviClasses[survivant.id] %}
                         <img src="{{asset('images/class/' ~ classe.className ~'.png')}}" title="{{classe.className}}" alt="icone pour la classe {{classe.className}}">
                     {% endfor %}
                     

@@ -53,7 +53,7 @@ class SurvivantRepository extends ServiceEntityRepository
                     ->leftjoin('su.redskill2','skr2')
                     ->leftjoin('su.redskill3','skr3')
                     ->leftjoin('su.races','r')
-                    ->join('su.classes','cl');
+                    ->leftjoin('su.classes','cl');
 
                     if($search->getRacename()!=null){
                         $query =$query  ->andWhere('r IN (:ra)')
@@ -71,6 +71,15 @@ class SurvivantRepository extends ServiceEntityRepository
       
     }
 
+    public function getClasses() :array
+    {
+        $qb = $this->createQueryBuilder('su');
+        $query = $qb->select('su,cl')
+                    ->join('su.classes','cl');
+        $results = $query->getQuery()->getArrayResult();
+        return $results;
+    }
+        
     // public function findSearch(SurvivantFilter $search): array
     // {
     //     $query = $this->createQueryBuilder('s');

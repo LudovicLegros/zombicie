@@ -1,0 +1,10 @@
+.formlog{
+    @include flex();
+    flex-direction: row;
+    
+    a{
+        display:block;
+        margin-bottom: 1em;
+        color:$color1;
+    }
+}

@@ -9,7 +9,7 @@
         {{message}}
     </p>
 {% endfor %}
-<section>
+<section class="formlog">
     <form method="post">
         {% if error %}
             <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -26,6 +26,7 @@
         <input type="text" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
         <label for="inputPassword">Password</label>
         <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+        <a href="{{ path('app_forgotten_password') }}">Mot de passe oublié?</a>
 
         <input type="hidden" name="_csrf_token"
             value="{{ csrf_token('authenticate') }}"
@@ -46,6 +47,6 @@
             Sign in
         </button>
     </form>
-    <a href="{{ path('app_forgotten_password') }}">Mot de passe oublié?</a>
+    
 </section>
 {% endblock %}

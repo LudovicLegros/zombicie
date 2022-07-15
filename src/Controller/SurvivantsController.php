@@ -28,9 +28,15 @@ class SurvivantsController extends AbstractController
         
         //Affichage des survivants
         $survivants = $repository->getFilter($survivantFilter);
+        $surviClassesArray = [];
         $survivantArray = [];
         
-
+        $surviClasses = $repository->getClasses();
+        
+        // ARRAY OF CLASSES
+        foreach($surviClasses as $thisSurviClasse){   
+            $surviClassesArray[$thisSurviClasse['id']] = $thisSurviClasse['classes'];      
+        }
         
         if($profil != null){
 
@@ -63,6 +69,7 @@ class SurvivantsController extends AbstractController
             'form'          => $form->createView(),
             'profil'        => $profil,
             'survivantArray'=> $survivantArray,
+            'surviClasses'  => $surviClassesArray,
             // 'tableId'       => $this->getProfil(),
         ]);
     }
