@@ -1,7 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Connexion{% endblock %}
-
+{% block upperheader %}
+<div class="header_image">
+    <img src="{{asset('images/background_nature.png')}}" alt="">
+</div>
+{% endblock %}
 {% block body %}
 {#---- ALERT AREA -----#}
 {% for message in app.flashes('success') %}

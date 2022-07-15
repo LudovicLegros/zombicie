@@ -8,12 +8,17 @@
         width: 100%;
     }
 }
+.header_fixed{
+    position:fixed;
+}
 
 header{
     background-color:$color1;
     height: 10vh;
+    width: 100%;
     padding:1em;
-    position:relative;
+    
+    top:0;
     z-index: 3;
     @include flex(flex-start);
 

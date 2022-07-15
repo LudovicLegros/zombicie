@@ -65,6 +65,8 @@ class SurvivantRepository extends ServiceEntityRepository
                                             ->setParameter('cla',$search->getClasseName());
                         }
                     }
+
+                    $query = $query ->orderBy('su.nom');
               
         $results = $query->getQuery()->getArrayResult();
         return $results;

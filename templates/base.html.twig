@@ -14,9 +14,13 @@
 
         {% endblock %}
     </head>
-    <body>     
+    <body class="preload">     
         {% block upperheader %}{% endblock %}
-        <header>
+        <header 
+        {% if survivants is defined %}
+            class = "header_fixed"
+        {% endif %}  
+        >
        
             {% block nav %}
             <nav>
@@ -47,6 +51,9 @@
             btnMenu.addEventListener('click',event  => {
                 menu.classList.toggle('dropdown'); 
             })
+
+            document.querySelector('body').classList.remove('preload') ;
+            
         </script>
     </body>
 </html>

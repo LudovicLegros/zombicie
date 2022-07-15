@@ -1,13 +1,18 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Log in!{% endblock %}
-
+{% block upperheader %}
+<div class="header_image">
+    <img src="{{asset('images/background_city.jpg')}}" alt="">
+</div>
+{% endblock %}
 {% block body %}
 
-<h1 class="h3 mb-3 font-weight-normal">Inscription</h1>
+
 <section class="formlog">
    
     {{form_start (form)}}
+    <h1>Inscription</h1>
         {{form_widget (form)}}
         <button>Valider</button>
     {{form_end (form)}}

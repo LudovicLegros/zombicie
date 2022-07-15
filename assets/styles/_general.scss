@@ -9,8 +9,13 @@ body{
     font-family:calibri;
 }
 
+.preload *{
+    transition:none !important;
+}
+
 section{
     margin:30px;
+   
 }
 
 h1{
