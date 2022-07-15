@@ -14,7 +14,9 @@
 
         {% endblock %}
     </head>
-    <body class="preload">     
+    <body class="preload">  
+
+
         {% block upperheader %}{% endblock %}
         <header 
         {% if survivants is defined %}
@@ -41,7 +43,12 @@
             </div>
             {% endblock %}
         </header>
-        
+            {#---- ALERT AREA -----#}
+            {% for message in app.flashes('success') %}
+                <p class="success">
+                    {{message}}
+                </p>
+            {% endfor %}
 
         {% block body %}{% endblock %}
         <script>
@@ -53,7 +60,7 @@
             })
 
             document.querySelector('body').classList.remove('preload') ;
-            
+
         </script>
     </body>
 </html>

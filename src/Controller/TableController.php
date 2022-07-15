@@ -42,6 +42,7 @@ class TableController extends AbstractController
       
         $manager->persist($profil);
         $manager->flush();
+        $this->addFlash("success","Survivant ajouté");
 
 
         return $this->redirectToRoute('detail_table' , [

@@ -33,7 +33,15 @@
         >   
             <div class="portrait">
                 <img src="{{asset('uploads/images/' ~ survivant.image)}}" alt="portrait du survivant {{survivant.nom}}">
-                <div class="story"><div class="text"><h3>{{survivant.nom}}:</h3>{{survivant.description | raw }}</div ></div>
+                <div class="story">
+                    <div class="text">
+                        <img src="{{asset('images/parchment.png')}}">
+                        <div class="content">
+                            <h3>{{survivant.nom}}:</h3>{{survivant.description | raw }}
+                        </div>
+                    </div >
+                    
+                </div>
                 <p>Voir l'histoire</p>
             </div>
             <div class="details">

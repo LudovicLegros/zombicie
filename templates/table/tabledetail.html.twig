@@ -45,9 +45,9 @@
                 {% if app.user %}
                     {% if app.user.id == profil.player.id %}
                         {% if nbSurvivantsChoosen >= 3 %}
-                        <p>Vous avez choisi trop de personnages</p>                         
+                        <p class="bottom_profil">Limite de selection de personnages atteinte</p>                         
                         {% else %}
-                        <a class="btn" href="{{ path('survivant_route',{'id' : profil.id}) }}">choisissez votre personnage</a>
+                        <a class="btn bottom_profil" href="{{ path('survivant_route',{'id' : profil.id}) }}">choisissez votre personnage</a>
                         {% endif %}
                     {% endif %}
                 {% endif %}

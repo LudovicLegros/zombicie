@@ -56,6 +56,8 @@ class HomeController extends AbstractController
         $manager->persist($profil);
         $manager->flush();
 
+        $this->addFlash("success","Vous avez rejoint une table");
+
         return $this->redirectToRoute('home');
     }
 }

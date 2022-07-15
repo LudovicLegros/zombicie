@@ -13,6 +13,7 @@
         flex-direction: column;
         height: 350px;
         width: 350px;
+        position: relative;
 
         .table_list{
             @include flex(center);
@@ -50,10 +51,20 @@
 
     img{
         height: 25px;
+        margin:0px 2px;
     }
 }
 
 .chosen{
     border:1px solid green;
     box-shadow: 0px 0px 2px green;
+}
+
+.bottom_profil{
+    position:absolute;
+    bottom: 5px;
+    left:50%;
+    width:70%;
+    transform: translateX(-50%);
+    text-align: center;
 }

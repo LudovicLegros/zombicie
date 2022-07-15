@@ -9,7 +9,7 @@
 {% block body %}
     <h1>Bonjour aventurier(e) 
         {% if app.user %} 
-        {{app.user.username}}
+            {{app.user.username}}
         {% endif %} 
         {% set toto = 1%}
     </h1>
@@ -21,6 +21,7 @@
             <div>
                 <h2>{{table.tableName}}</h2>
                 <p>Le {{table.date|date("d/m/Y")}}</p>
+                <p>Participant(es):</p>
                             {# --------VERIFIER SI LE USER EXISTE DANS LA TABLE------- #}
                 {% set flag ='' %}
                 {% if app.user %}
@@ -38,11 +39,14 @@
             </div>
             
             {# --------------LOOP FOR PROFIL---------- #}
-            {% for profil in table.profils %}
-            <div>        
-                {{profil.player}}
-            </div>    
-            {% endfor %}
+            <div class="players">
+                {% for profil in table.profils %}
+                {# <div>         #}
+                    <p>{{profil.player}}</p>
+                {# </div>     #}
+                {% endfor %}
+          
+            </div>
             
             <a class="btn" href="{{ path('detail_table',{'id' : table.id}) }}">Voir la table</a>
         

@@ -14,8 +14,28 @@ h1{
         flex-direction: column;
         margin:1em;
         padding:1em;
-        width: 300px;
-        height: 300px;
-        border: 1px solid rgb(177, 176, 176)
+        width: 350px;
+        height: 350px;
+        border: 1px solid rgb(177, 176, 176);
+
+        .players{
+            @include flex();
+            // align-self: flex-start;
+            flex-direction: column;
+            flex-wrap: wrap;
+            width: 300px;
+            height: 60%;
+            font-family: medievalsharp;
+            text-align: center;
+
+            p{
+                background-color: $color3 ;
+                border: 1px solid $color2;
+                width: 50%;
+                font-size: 20px;
+                padding:4px 7px;   
+                margin: 5px 2px;
+            }
+        }
     }
 }
