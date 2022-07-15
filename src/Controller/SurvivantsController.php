@@ -64,6 +64,8 @@ class SurvivantsController extends AbstractController
                 }
         }
 
+        // dd($survivants);
+
         return $this->render('survivants/survivants.html.twig', [
             'survivants'    => $survivants,
             'form'          => $form->createView(),
@@ -73,29 +75,4 @@ class SurvivantsController extends AbstractController
             // 'tableId'       => $this->getProfil(),
         ]);
     }
-
-        // #[Route('/survivants/{id}', name:'survivant_route')]
-        // public function verifSurvivant($id, ProfilRepository $repo): Response
-        // {   
-
-        //     $tests = $repo->findBy(['tableParty' => $id]);
-        //     $allow = 0;
-        //     foreach($tests as $test){
-        //         // dd($this->getUser()->getId());
-        //         if($test->getPlayer()->getId() == $this->getUser()->getId()){
-        //             $allow = 1;
-        //             break;          
-        //         }
-
-        //         if($allow = 1){
-
-        //         }else{
-        //             return $this->redirectToRoute('home');
-        //         }
-        //     }
-
-        //     return $this->render('survivants/survivants.html.twig', [
-        
-        //     ]);
-        // }
 }

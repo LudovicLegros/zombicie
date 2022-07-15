@@ -43,7 +43,7 @@ class SurvivantRepository extends ServiceEntityRepository
     public function getFilter(SurvivantFilter $search) :array
     {
         $qb = $this->createQueryBuilder('su');
-        $query = $qb->select('su,r,skb,skb2,sky,sko1,sko2,skr1,skr2,skr3,cl')
+        $query = $qb->select('su,r,skb,skb2,sky,sko1,sko2,skr1,skr2,skr3')
                     ->leftjoin('su.blueskill1','skb')
                     ->leftjoin('su.blueskill2','skb2')
                     ->leftjoin('su.yellowskill','sky')
@@ -52,8 +52,15 @@ class SurvivantRepository extends ServiceEntityRepository
                     ->leftjoin('su.redskill1','skr1')
                     ->leftjoin('su.redskill2','skr2')
                     ->leftjoin('su.redskill3','skr3')
-                    ->leftjoin('su.races','r')
-                    ->leftjoin('su.classes','cl');
+                    ->leftjoin('su.races','r');
+
+                    // LOOT TO DEFINE HOW MANY CHECKBOX IS CHECKED
+                    foreach($search->getClasseName() as $classe){
+                    $query =$query->leftjoin('su.classes','cl'.$classe->getId());
+                    }
+                    // ->leftjoin('su.classes','cl1')
+                    // ->leftjoin('su.classes','cl2')
+                    // ->leftjoin('su.classes','cl3');
 
                     if($search->getRacename()!=null){
                         $query =$query  ->andWhere('r IN (:ra)')
@@ -61,8 +68,15 @@ class SurvivantRepository extends ServiceEntityRepository
                     }
                     if($search->getClasseName()!=null){
                         if((!$search->getClasseName()->isEmpty())){
-                            $query =$query  ->andWhere('cl IN (:cla)')
-                                            ->setParameter('cla',$search->getClasseName());
+                    // AGGREGATION FOR THE FILTER SEARCH
+                            foreach($search->getClasseName() as $classe){
+                                // dd($classe->getId());
+                                $query =$query->andWhere('cl'.$classe->getId().'.id = ('.$classe->getId().')');
+                            }
+                          // EXEMPLE BLOC
+                                // ->andWhere('cl.id IN (:cla)')
+                                // ->setParameter('cla',$search->getClasseName());
+                                // dd($search->getClasseName());
                         }
                     }
 
