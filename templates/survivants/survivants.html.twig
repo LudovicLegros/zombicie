@@ -104,6 +104,7 @@
 
         item.addEventListener('click',event  => {
             story.classList.toggle('storyVisible');
+            event.stopPropagation(); 
         })
         story.addEventListener('click',event  => {
             story.classList.toggle('storyVisible');

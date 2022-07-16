@@ -120,6 +120,27 @@
         height: 200px;
     }
 
+    #survivants article{
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    // article .portrait:hover{
+    //     pointer-events: none;
+    // }
+
+    article .portrait img{
+        width: 100%;
+        object-fit: cover;
+    }
+
+    article .portrait .story{
+        font-size: 17px;
+    }
+
+    
+
     header .btn_menu{
         display:block;
         color:$color3;

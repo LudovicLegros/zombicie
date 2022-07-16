@@ -54,9 +54,11 @@ class SurvivantRepository extends ServiceEntityRepository
                     ->leftjoin('su.redskill3','skr3')
                     ->leftjoin('su.races','r');
 
-                    // LOOT TO DEFINE HOW MANY CHECKBOX IS CHECKED
-                    foreach($search->getClasseName() as $classe){
-                    $query =$query->leftjoin('su.classes','cl'.$classe->getId());
+                    // LOOP TO DEFINE HOW MANY CHECKBOX IS CHECKED
+                    if($search->getClasseName()!=null){
+                        foreach($search->getClasseName() as $classe){
+                            $query =$query->leftjoin('su.classes','cl'.$classe->getId());
+                        }
                     }
                     // ->leftjoin('su.classes','cl1')
                     // ->leftjoin('su.classes','cl2')
