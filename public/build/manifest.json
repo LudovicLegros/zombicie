@@ -1,0 +1,18 @@
+{
+  "build/app.css": "/build/app.css",
+  "build/app.js": "/build/app.js",
+  "build/runtime.js": "/build/runtime.js",
+  "build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_core-js_modules_es_da-c446a7.css": "/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_core-js_modules_es_da-c446a7.css",
+  "build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_core-js_modules_es_da-c446a7.js": "/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_core-js_modules_es_da-c446a7.js",
+  "build/fonts/fa-solid-900.ttf": "/build/fonts/fa-solid-900.e615bbcb.ttf",
+  "build/fonts/fa-brands-400.ttf": "/build/fonts/fa-brands-400.b823fc0d.ttf",
+  "build/fonts/fa-solid-900.woff2": "/build/fonts/fa-solid-900.59edf72a.woff2",
+  "build/fonts/fa-brands-400.woff2": "/build/fonts/fa-brands-400.ebb7a127.woff2",
+  "build/fonts/medievalsharp-all-400-normal.woff": "/build/fonts/medievalsharp-all-400-normal.b7588c48.woff",
+  "build/fonts/fa-regular-400.ttf": "/build/fonts/fa-regular-400.0d03b1bb.ttf",
+  "build/fonts/medievalsharp-latin-400-normal.woff2": "/build/fonts/medievalsharp-latin-400-normal.3bc2ffcc.woff2",
+  "build/fonts/fa-regular-400.woff2": "/build/fonts/fa-regular-400.0caf4c6c.woff2",
+  "build/fonts/medievalsharp-latin-ext-400-normal.woff2": "/build/fonts/medievalsharp-latin-ext-400-normal.080cd6b5.woff2",
+  "build/fonts/fa-v4compatibility.ttf": "/build/fonts/fa-v4compatibility.4baccb54.ttf",
+  "build/fonts/fa-v4compatibility.woff2": "/build/fonts/fa-v4compatibility.afac8956.woff2"
+}
